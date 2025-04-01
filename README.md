@@ -2,7 +2,7 @@
 
 A collection of CUDA programs and experiments to explore GPU computing, parallelism, and performance optimization.
 
-All programs are ran on,
+All programs ran on,
 
 ```bash
 nvcc: NVIDIA (R) Cuda compiler driver
@@ -33,4 +33,13 @@ Mon Mar 31 15:26:37 2025
 |=========================================================================================|
 |    0   N/A  N/A            1667      G   /usr/lib/xorg/Xorg                        4MiB |
 +-----------------------------------------------------------------------------------------+
+```
+
+To compile the code, go to respective directory in `src`, use the following command:
+
+```bash
+cmake -Bbuild
+cmake --build build
+cd build
+./<program_name>
 ```
