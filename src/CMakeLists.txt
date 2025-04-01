@@ -1,1 +1,2 @@
 add_subdirectory(0_HelloWorld)
+add_subdirectory(1_ArrSum)
