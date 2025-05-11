@@ -4,16 +4,7 @@
 #include <string.h>
 #include <time.h>
 
-// Copied from Book: Professional CUDA-C Programming
-#define CHECK(call)                                                            \
-    {                                                                          \
-        const cudaError_t error = call;                                        \
-        if (error != cudaSuccess) {                                            \
-            printf("Error: %s:%d, ", __FILE__, __LINE__);                      \
-            printf("code:%d, reason: %s\n", error, cudaGetErrorString(error)); \
-            exit(1);                                                           \
-        }                                                                      \
-    }
+#include "../macros.cu"
 
 void ArrSumOnHost(const float* A, const float* B, float* C, const int N) {
     for (int32_t idx = 0; idx < N; ++idx) {

@@ -5,16 +5,7 @@
 #include <sys/time.h>
 #include <time.h>
 
-// Copied from Book: Professional CUDA-C Programming
-#define CHECK(call)                                                            \
-    {                                                                          \
-        const cudaError_t error = call;                                        \
-        if (error != cudaSuccess) {                                            \
-            printf("Error: %s:%d, ", __FILE__, __LINE__);                      \
-            printf("code:%d, reason: %s\n", error, cudaGetErrorString(error)); \
-            exit(1);                                                           \
-        }                                                                      \
-    }
+#include "../macros.cu"
 
 double cpuSecond() {
     struct timeval tp;
