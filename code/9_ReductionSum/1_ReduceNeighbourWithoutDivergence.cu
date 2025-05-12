@@ -1,6 +1,7 @@
 #include <stdint.h>
 
-__global__ void ReduceNeighbour(float* input, float* output, const uint32_t N) {
+__global__ void ReduceNeighbourWithoutDivergence(float* input, float* output,
+                                                 const uint32_t N) {
     const uint32_t tid = threadIdx.x;
     const uint32_t idx = tid + blockIdx.x * blockDim.x;
 
@@ -9,8 +10,9 @@ __global__ void ReduceNeighbour(float* input, float* output, const uint32_t N) {
     float* local_input = input + blockIdx.x * blockDim.x;
 
     for (int stride = 1; stride < blockDim.x; stride <<= 1) {
-        if ((tid % (stride << 1)) == 0) {
-            local_input[tid] += local_input[tid + stride];
+        const int index = 2 * stride * tid;
+        if (index < blockDim.x) {
+            local_input[index] += local_input[tid + stride];
         }
         __syncthreads();
     }
